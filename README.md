@@ -56,7 +56,7 @@ my-plugin-custom-management/
 
 ## 연결 방법
 
-claude.ai → Customize → Plugins → 개인 플러그인(Personal plugins) "+" → Add marketplace → 이 GitHub 리포(`CastleQ/my-plugin-custom-management`) 입력 → 목록에서 `session-briefing` 켜기
+**웹 claude.ai**(데스크톱 앱 설정 말고) → 설정 → 플러그인 → "+ 추가" → 마켓플레이스 추가 → `CastleQ/my-plugin-custom-management` → `session-briefing` 켜기 → "내 항목"에 보이면 완료. 새 플러그인은 진열장에 추가·병합한 뒤 같은 화면에서 켠다.
 
 ## 플러그인 추가 방법
 
@@ -73,3 +73,4 @@ claude.ai → Customize → Plugins → 개인 플러그인(Personal plugins) "+
 - 2026-11-09: 리포 생성, README 작성. 이후 작업은 `docs/handoff-2026-11-09.md` 참고.
 - 2026-11-09: 진열장(`marketplace.json`)과 `session-briefing` 0.1.0 작성. `claude plugin validate` 통과. 클라우드 세션 안에서 `--plugin-dir`로 띄운 시험 세션에서 첫 답변 맨 위에 표가 나오는 것 확인. **다음: claude.ai 계정 연결 후 새 세션에서 확인.**
 - 2026-11-09: 주문형 보기 스킬(`plugin-list`) 추가. 시험 세션에서 "설치된 플러그인 보여줘"로 표가 나오는 것 확인.
+- 2026-11-09: claude.ai 계정 연결 완료(공개 리포 OK). 새 클라우드 세션 첫 답변 표와 "설치된 플러그인 보여줘" 모두 동작 확인. **1차 목표 완료.**
