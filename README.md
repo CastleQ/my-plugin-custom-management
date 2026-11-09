@@ -71,3 +71,4 @@ my-plugin-custom-management/
 - 2026-11-09: claude.ai 계정 연결 완료(공개 리포 OK). 새 클라우드 세션 첫 답변 표와 "설치된 플러그인 보여줘" 모두 동작 확인. **1차 목표 완료.**
 - 2026-11-09: 0.3.0 — 표에 플러그인별 상시 토큰과 합계 추가. headroom은 클라우드 세션에서 효과가 없어 보류(필요하면 재검토).
 - 2026-11-09: 0.4.0 — 기준 목록 비교(평소 한 줄, 다를 때만 펼침), 요청 시 "하는 일" 칸, 개인 지침 점검. superpowers·ponytail을 sha 고정으로 진열장에 등록.
+- 2026-11-09 (점검): 계정 연동 5개(session-briefing 0.4.0, superpowers 7.0.2, ponytail 5.3.3, claude-md-management 1.0.0, cowork-plugin-management 0.2.2) 모두 켜짐·기준과 일치. 단, 환경 변수 `CLAUDE_CODE_PLUGIN_DIRS`가 Default 환경에 **아직 남아** 있어 빈 경로 3개(`inline[0~2]`, 꺼짐)가 생기고 브리핑이 펼쳐짐. 세션 안에서는 지울 수 없는 예약 변수 → **웹 claude.ai 환경 설정에서 직접 지우고 저장**해야 함.
