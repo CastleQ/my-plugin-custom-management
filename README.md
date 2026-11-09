@@ -8,7 +8,7 @@ CastleQ 개인용 **Claude 플러그인·스킬 공통 관리 리포**입니다.
 - 작업은 전부 **Claude Code 클라우드 세션**(GitHub 리포 연결)에서 하고, 여러 PC와 폰을 오가며 이어서 합니다. 로컬 세션은 쓰지 않습니다.
 - 클라우드 세션은 **각 작업 리포의 `.claude/settings.json`에 적어둔 플러그인을 설치하지 않습니다.** 그래서 리포마다 설정하는 대신, 이 리포를 **개인 플러그인 마켓(진열장)** 으로 만들어 **claude.ai 계정에 연결**하는 방식으로 관리합니다. 계정에서 켠 플러그인은 `이름@synced`로 일반 대화와 Claude Code 양쪽에 따라옵니다.
 
-## 구성 (계획)
+## 구성
 
 ```
 my-plugin-custom-management/
@@ -40,10 +40,32 @@ my-plugin-custom-management/
 - 플러그인별 **세션당 토큰 비용**도 함께 보여줘서, 설치해놓고 잊은 플러그인을 환기합니다.
 - 클라우드 세션은 화면 패널(mod)을 그리지 못하므로, 패널 대신 "세션 시작 훅 + 첫 답변 표" 방식을 씁니다.
 
-## 연결 방법 (예정)
+현재 1차 버전의 표 (출처는 쉬운 말로 표시):
 
-claude.ai → Customize → Plugins → 개인 플러그인(Personal plugins) "+" → 마켓 추가 → 이 GitHub 리포 연결
+| 출처 | 뜻 |
+| :- | :- |
+| 계정 연동 | claude.ai 계정에서 켬 (`synced`) |
+| 환경 자동설치 | 클라우드 환경의 준비 스크립트가 넣어줌 (`session`) |
+| 이 리포 전용 / 이 리포(나만) | 작업 리포 설정에서 켬 (`project` / `local`) |
+| 내 PC 설정 / 관리자 지정 | `user` / `managed` |
+| (꺼짐) | 설치됐지만 꺼져 있음 |
+
+- 토큰 절약: 세션 **처음 시작할 때만**(`startup`) 실행하고, 출력은 표 몇 줄로 최소화. 이어하기(resume)에서는 다시 출력하지 않음.
+- 실패하면 "플러그인 목록을 가져오지 못함" 한 줄만 나옴.
+
+## 연결 방법
+
+claude.ai → Customize → Plugins → 개인 플러그인(Personal plugins) "+" → Add marketplace → 이 GitHub 리포(`CastleQ/my-plugin-custom-management`) 입력 → 목록에서 `session-briefing` 켜기
+
+## 플러그인 추가 방법
+
+`.claude-plugin/marketplace.json`의 `plugins` 목록에 한 항목을 추가하고 커밋·푸시 → claude.ai에서 해당 플러그인 켜기.
+
+- 직접 만든 것: 폴더를 `plugins/common/이름/` 또는 `plugins/optional/이름/`에 두고 `"source": "./plugins/common/이름"`
+- 남이 만든 것(GitHub): `"source": { "source": "github", "repo": "소유자/리포" }`
+- 추가 후 `claude plugin validate .` 로 검사
 
 ## 상태
 
 - 2026-11-09: 리포 생성, README 작성. 이후 작업은 `docs/handoff-2026-11-09.md` 참고.
+- 2026-11-09: 진열장(`marketplace.json`)과 `session-briefing` 0.1.0 작성. `claude plugin validate` 통과. 클라우드 세션 안에서 `--plugin-dir`로 띄운 시험 세션에서 첫 답변 맨 위에 표가 나오는 것 확인. **다음: claude.ai 계정 연결 후 새 세션에서 확인.**
