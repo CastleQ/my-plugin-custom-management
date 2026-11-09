@@ -1,0 +1,10 @@
+{
+  "_설명": "켜져 있어야 할 공통 플러그인(기준 목록). version이 null이면 버전은 따지지 않음. 플러그인을 추가·삭제·버전 변경할 때 같이 고친다.",
+  "plugins": {
+    "session-briefing": { "version": null, "why": "세션 시작 브리핑" },
+    "superpowers": { "version": "7.0.2", "why": "작업 절차(계획→검증)" },
+    "ponytail": { "version": "5.3.3", "why": "최소한으로 만들기" },
+    "claude-md-management": { "version": "1.0.0", "why": "지침 파일 정리" },
+    "cowork-plugin-management": { "version": null, "why": "플러그인 만들기 (계정 기본 제공)" }
+  }
+}
