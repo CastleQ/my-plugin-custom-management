@@ -1,6 +1,6 @@
 {
   "name": "session-briefing",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "세션 시작 시 적용된 플러그인 목록을 첫 답변 맨 위에 표로 보여줌",
   "author": { "name": "CastleQ" }
 }

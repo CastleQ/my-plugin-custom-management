@@ -1,6 +1,8 @@
 {
   "name": "my-plugin-custom-management",
-  "owner": { "name": "CastleQ" },
+  "owner": {
+    "name": "CastleQ"
+  },
   "metadata": {
     "description": "CastleQ 개인 플러그인 진열장. common = 항상 켬, optional = 필요할 때만."
   },
@@ -9,6 +11,26 @@
       "name": "session-briefing",
       "source": "./plugins/common/session-briefing",
       "description": "세션 시작 시 적용된 플러그인 목록을 첫 답변 맨 위에 표로 보여줌",
+      "category": "common"
+    },
+    {
+      "name": "superpowers",
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers",
+        "sha": "22f0b463e7a5e579904dd6211a520321035526f7"
+      },
+      "description": "작업 절차(아이디어→계획→실행→검증) 스킬 모음",
+      "category": "common"
+    },
+    {
+      "name": "ponytail",
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail",
+        "sha": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846"
+      },
+      "description": "꼭 필요한 만큼만 최소한으로 만들기",
       "category": "common"
     }
   ]
