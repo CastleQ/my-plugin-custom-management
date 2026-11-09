@@ -52,6 +52,7 @@ my-plugin-custom-management/
 
 - 토큰 절약: 세션 **처음 시작할 때만**(`startup`) 실행하고, 출력은 표 몇 줄로 최소화. 이어하기(resume)에서는 다시 출력하지 않음.
 - 실패하면 "플러그인 목록을 가져오지 못함" 한 줄만 나옴.
+- **원할 때 다시 보기**: "설치된 플러그인 보여줘"라고 말하거나 `/session-briefing:plugin-list` 입력. (스킬 설명 한 줄만 매 세션 맥락에 들어가고, 표는 요청할 때만 만듦)
 
 ## 연결 방법
 
@@ -62,10 +63,13 @@ claude.ai → Customize → Plugins → 개인 플러그인(Personal plugins) "+
 `.claude-plugin/marketplace.json`의 `plugins` 목록에 한 항목을 추가하고 커밋·푸시 → claude.ai에서 해당 플러그인 켜기.
 
 - 직접 만든 것: 폴더를 `plugins/common/이름/` 또는 `plugins/optional/이름/`에 두고 `"source": "./plugins/common/이름"`
-- 남이 만든 것(GitHub): `"source": { "source": "github", "repo": "소유자/리포" }`
+- 남이 만든 것(GitHub): `"source": { "source": "github", "repo": "소유자/리포" }` — 보통은 Claude에게 GitHub 주소만 주면 리포 구조를 확인해 알맞은 형태로 넣음
+  - 리포 맨 위에 플러그인이 있으면 위 형태, 한 리포에 여러 플러그인이 든 "진열장형" 리포면 그 안의 하위 폴더를 지정
+  - 갑작스러운 변경을 막으려면 특정 시점(커밋)으로 고정 가능
 - 추가 후 `claude plugin validate .` 로 검사
 
 ## 상태
 
 - 2026-11-09: 리포 생성, README 작성. 이후 작업은 `docs/handoff-2026-11-09.md` 참고.
 - 2026-11-09: 진열장(`marketplace.json`)과 `session-briefing` 0.1.0 작성. `claude plugin validate` 통과. 클라우드 세션 안에서 `--plugin-dir`로 띄운 시험 세션에서 첫 답변 맨 위에 표가 나오는 것 확인. **다음: claude.ai 계정 연결 후 새 세션에서 확인.**
+- 2026-11-09: 주문형 보기 스킬(`plugin-list`) 추가. 시험 세션에서 "설치된 플러그인 보여줘"로 표가 나오는 것 확인.
