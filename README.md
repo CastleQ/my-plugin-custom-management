@@ -35,7 +35,7 @@ my-plugin-custom-management/
 - **기준과 다를 때만** 문제 줄 + 표를 펼침: ⚠ 빠짐 / ⏸ 꺼짐 / 🔁 중복 / 🔄 버전 다름 / ➕ 기준에 없음 / 📄 개인 지침 다름·없음
 - **요청할 때**: "설치된 플러그인 보여줘" 또는 `/session-briefing:plugin-list` → 하는 일까지 들어간 전체 표
 - 기준 목록: `plugins/common/session-briefing/expected.json` (플러그인을 추가·삭제·버전 변경할 때 같이 고침)
-- 개인 지침 원본: `plugins/common/session-briefing/guidelines/CLAUDE.md` (실제 `~/.claude/CLAUDE.md`와 같은지 확인)
+- 개인 지침 원본: `plugins/common/session-briefing/guidelines/CLAUDE.md` (실제 `~/.claude/CLAUDE.md`와 같은지 확인). 일반 대화(claude.ai)엔 이 파일이 없으므로 "개인 지침 대화 설정"으로 표시하고 문제로 치지 않음 — 그쪽 지침은 claude.ai 설정의 개인 선호에 넣음
 - 출처 표시: 계정 연동(`synced`) / 환경 자동설치(`session`) / 이 리포 전용(`project`) / 이 리포(나만)(`local`) / 내 PC 설정(`user`) / 관리자 지정(`managed`)
 - 상시 토큰: `claude plugin details`의 Always-on 추정치. 세션 시작 훅이 끼워 넣는 글은 포함되지 않아 실제 부담은 더 큼.
 - 세션 **처음 시작할 때만** 실행(이어하기 제외). 실패하면 "플러그인 목록을 가져오지 못함" 한 줄.
@@ -84,3 +84,4 @@ my-plugin-custom-management/
 - 2026-11-09: 0.4.0 — 기준 목록 비교(평소 한 줄, 다를 때만 펼침), 요청 시 "하는 일" 칸, 개인 지침 점검. superpowers·ponytail을 sha 고정으로 진열장에 등록.
 - 2026-11-09 (점검): 계정 연동 5개(session-briefing 0.4.0, superpowers 7.0.2, ponytail 5.3.3, claude-md-management 1.0.0, cowork-plugin-management 0.2.2) 모두 켜짐·기준과 일치. 단, 환경 변수 `CLAUDE_CODE_PLUGIN_DIRS`가 Default 환경에 **아직 남아** 있어 빈 경로 3개(`inline[0~2]`, 꺼짐)가 생기고 브리핑이 펼쳐짐. 세션 안에서는 지울 수 없는 예약 변수 → **웹 claude.ai 환경 설정에서 직접 지우고 저장**해야 함.
 - 2026-11-09: 0.5.0 — "꺼내 쓰는 도구" 구조(`plugins/optional/catalog.md` + 입구 스킬 `optional-tools`). k-skill 13개 등록(sha 고정). 주차장 스킬로 중계 서버 조회 실제 동작 확인. **main 병합 후 새 세션에서 "서울시청 근처 공영주차장"으로 확인 필요.**
+- 2026-11-09: 0.5.1 — 일반 대화(폰)에서 꺼내 쓰기 동작 확인(주차장). 일반 대화에선 지침 파일이 없는 게 정상이라 문제로 표시하지 않음. 입구 스킬 설명 축약(상시 토큰이 예상 70이 아니라 약 180 늘었음).

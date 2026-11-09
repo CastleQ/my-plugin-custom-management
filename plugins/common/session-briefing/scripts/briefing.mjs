@@ -43,7 +43,9 @@ export function diagnose(list, expected) {
 function guidelineStatus() {
   const want = readFileSync(join(ROOT, 'guidelines', 'CLAUDE.md'), 'utf8').trimEnd();
   let have;
-  try { have = readFileSync(join(homedir(), '.claude', 'CLAUDE.md'), 'utf8').trimEnd(); } catch { return '없음'; }
+  // 일반 대화(claude.ai)엔 준비 스크립트가 없어 파일이 원래 없다 → 지침은 claude.ai 개인 선호가 담당
+  try { have = readFileSync(join(homedir(), '.claude', 'CLAUDE.md'), 'utf8').trimEnd(); }
+  catch { return process.env.CLAUDE_CODE_REMOTE === 'true' ? '없음' : '대화 설정'; }
   return have === want ? '✓' : '다름';
 }
 
@@ -64,11 +66,11 @@ async function main(full) {
   const total = costs.reduce((s, c, i) => s + (list[i].enabled === false ? 0 : c ?? 0), 0);
   const issues = diagnose(list, expected);
   const guide = guidelineStatus();
-  if (guide !== '✓') issues.push(`📄 개인 지침: ${guide}`);
+  if (guide !== '✓' && guide !== '대화 설정') issues.push(`📄 개인 지침: ${guide}`);
   const head = full ? '' : '[세션 브리핑] 첫 답변 맨 위에 아래 내용을 그대로 보여줄 것(이후 답변엔 반복 금지).\n';
 
   if (!issues.length && !full) {
-    console.log(`${head}🧰 공통 도구 ${list.length}개 정상 · 개인 지침 ✓ · 상시 약 ${total}토큰`);
+    console.log(`${head}🧰 공통 도구 ${list.length}개 정상 · 개인 지침 ${guide} · 상시 약 ${total}토큰`);
     return;
   }
   const rows = list.map((p, i) => {
@@ -77,7 +79,7 @@ async function main(full) {
     return `|${names[i]}${off}|${LABEL[p.scope] ?? p.scope}|${costs[i] ?? '?'}${why}|`;
   });
   console.log([
-    head + (issues.length ? `🧰 기준과 다른 점 ${issues.length}개 · 개인 지침 ${guide}` : `🧰 공통 도구 ${list.length}개 정상 · 개인 지침 ✓`),
+    head + (issues.length ? `🧰 기준과 다른 점 ${issues.length}개 · 개인 지침 ${guide}` : `🧰 공통 도구 ${list.length}개 정상 · 개인 지침 ${guide}`),
     ...issues.map(s => `- ${s}`),
     '',
     full ? '|플러그인|출처|상시 토큰|하는 일|' : '|플러그인|출처|상시 토큰|',
