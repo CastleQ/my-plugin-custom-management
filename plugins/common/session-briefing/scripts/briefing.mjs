@@ -43,9 +43,14 @@ export function diagnose(list, expected) {
 function guidelineStatus() {
   const want = readFileSync(join(ROOT, 'guidelines', 'CLAUDE.md'), 'utf8').trimEnd();
   let have;
-  // 일반 대화(claude.ai)엔 준비 스크립트가 없어 파일이 원래 없다 → 지침은 claude.ai 개인 선호가 담당
+  // 일반 대화(claude.ai)엔 준비 스크립트가 없어 파일이 원래 없다 → 지침은 claude.ai 개인 선호가 담당.
+  // 준비 스크립트가 돌았는지는 그 스크립트가 먼저 쓰는 settings.json(언어)으로 판단(CLAUDE_CODE_REMOTE는 대화에서도 true였음).
   try { have = readFileSync(join(homedir(), '.claude', 'CLAUDE.md'), 'utf8').trimEnd(); }
-  catch { return process.env.CLAUDE_CODE_REMOTE === 'true' ? '없음' : '대화 설정'; }
+  catch {
+    let setup = '';
+    try { setup = readFileSync(join(homedir(), '.claude', 'settings.json'), 'utf8'); } catch {}
+    return /"language":\s*"korean"/.test(setup) ? '없음' : '대화 설정';
+  }
   return have === want ? '✓' : '다름';
 }
 
