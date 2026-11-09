@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/briefing.mjs\" 2>/dev/null || echo '[세션 브리핑] 첫 답변 맨 위에 \"플러그인 목록을 가져오지 못함\" 한 줄만 쓸 것.'",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}
