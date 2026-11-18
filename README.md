@@ -56,6 +56,7 @@ my-plugin-custom-management/
 | 플러그인 | 켜는 곳 | 버전 |
 | :- | :- | :- |
 | session-briefing, superpowers, ponytail | 이 진열장 → 웹 claude.ai에서 켬 | 진열장에 커밋(sha)으로 고정 |
+| all-about-botc | 이 진열장 → 웹 claude.ai에서 켬 | 고정 안 함 — 내 리포(CastleQ/All_about_BOTC)라 main 최신판을 따라감 |
 | claude-md-management | 웹 claude.ai "탐색"(Anthropic 공식 목록)에서 켬 — 공식 이름이라 개인 진열장에 못 올림 | 고정 불가, 바뀌면 브리핑이 알림 |
 | cowork-plugin-management | 계정 기본 제공 | 따지지 않음 |
 | 개인 지침(CLAUDE.md) | 클라우드 환경 준비 스크립트가 이 리포의 원본을 받아 씀 | main 기준 |
@@ -89,3 +90,4 @@ my-plugin-custom-management/
 - 2026-11-09: 0.5.2 — 폰 대화에서 seoul-density 꺼내 쓰기 확인, 상시 토큰 264→201로 축소 확인. 0.5.1의 일반 대화 판별(`CLAUDE_CODE_REMOTE`)은 대화에서도 true라 실패 → 준비 스크립트가 쓰는 settings.json 유무로 판별.
 - 2026-11-09: 폰 일반 대화에서 0.5.2 브리핑 한 줄(개인 지침 대화 설정) 확인. 명령 실행 없는 대화엔 브리핑이 안 나오는 것 확인(정상). **이번 작업 완료.**
 - 2026-11-12: 개인 지침 — "작업 종료/끝" 명령이면 작업 기록·CLAUDE.md 정리를 묻지 않고 바로 실행, Claude가 스스로 판단할 때만 묻기.
+- 2026-11-18: all-about-botc(내 리포 CastleQ/All_about_BOTC의 플러그인)를 공통으로 등록. 일반 대화에서도 botc-homebrew-design 등 시계피 스킬을 쓰기 위함. 상시 약 148토큰. 내 리포라 sha 고정 없이 최신판 추종. **웹 claude.ai에서 켜고 새 세션에서 확인 필요.**

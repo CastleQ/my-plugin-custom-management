@@ -5,6 +5,7 @@
     "superpowers": { "version": "7.0.2", "why": "작업 절차(계획→검증)" },
     "ponytail": { "version": "5.3.3", "why": "최소한으로 만들기" },
     "claude-md-management": { "version": "1.0.0", "why": "지침 파일 정리" },
-    "cowork-plugin-management": { "version": null, "why": "플러그인 만들기 (계정 기본 제공)" }
+    "cowork-plugin-management": { "version": null, "why": "플러그인 만들기 (계정 기본 제공)" },
+    "all-about-botc": { "version": null, "why": "시계피 룰·홈브류 설계 (내 리포, 최신판 추종)" }
   }
 }
