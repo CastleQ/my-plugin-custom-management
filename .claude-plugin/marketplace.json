@@ -32,6 +32,16 @@
       },
       "description": "꼭 필요한 만큼만 최소한으로 만들기",
       "category": "common"
+    },
+    {
+      "name": "all-about-botc",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/CastleQ/All_about_BOTC.git",
+        "path": "plugins/all-about-botc"
+      },
+      "description": "시계피(BOTC) 룰 판정·스크립트 분석·홈브류 설계·퀴즈 (내 리포, 최신판 추종)",
+      "category": "common"
     }
   ]
 }
